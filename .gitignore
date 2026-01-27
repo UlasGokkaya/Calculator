@@ -1,0 +1,23 @@
+# Prerequisites
+*.d
+*.obj
+*.exe
+*.o
+
+# CMake Build Artifacts (Keep your repo clean!)
+/build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Qt Generated Files (The MOC output)
+.qmake.stash
+*.qmlc
+*.jsc
+ui_*.h
+moc_*.cpp
+
+# VS Code Settings (User specific)
+.vscode/
+*.user
