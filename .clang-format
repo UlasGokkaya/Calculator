@@ -1,0 +1,38 @@
+# =============================================================================
+# .clang-format — Automatic Code Formatter Configuration
+# =============================================================================
+#
+# WHY THIS FILE EXISTS:
+# Without it, every developer formats code differently. With it, you run
+# one command and ALL your code looks consistent:
+#
+#   clang-format -i src/**/*.cpp src/**/*.h
+#
+# This uses the "LLVM" base style (clean, widely used) with a few tweaks
+# that are common in Qt projects.
+# =============================================================================
+
+BasedOnStyle: LLVM
+
+# Line width — 100 is the modern sweet spot (80 is too cramped, 120 is too wide)
+ColumnLimit: 100
+
+# Indent with 4 spaces (Qt convention, also easier to read than 2)
+IndentWidth: 4
+
+# Opening brace on the same line as the statement:
+#   if (x) {      ← this style (Attach)
+# vs.
+#   if (x)        ← the other style (Allman)
+#   {
+BreakBeforeBraces: Attach
+
+# Pointer alignment: int *ptr (left-aligned is C++ convention)
+PointerAlignment: Left
+
+# Sort #include lines alphabetically (keeps things tidy)
+SortIncludes: true
+
+# Allow short functions on a single line:
+#   int getX() { return x; }
+AllowShortFunctionsOnASingleLine: Inline

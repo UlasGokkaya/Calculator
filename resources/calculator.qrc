@@ -1,0 +1,29 @@
+<!-- =======================================================================
+  calculator.qrc — Qt Resource File
+  =========================================================================
+
+  WHY THIS FILE?
+  Qt can compile assets (icons, images, stylesheets, fonts) INTO the binary.
+  This means your app doesn't need external files to run — everything is
+  self-contained.
+
+  HOW IT WORKS:
+  1. List files in this .qrc file
+  2. CMake + AUTORCC compiles them into the binary
+  3. Access them in code with ":/prefix/filename"
+
+  TODO (Step 13): Add your stylesheet here:
+
+  <RCC>
+    <qresource prefix="/">
+      <file>styles/dark.qss</file>
+      <file>icons/calculator.png</file>
+    </qresource>
+  </RCC>
+
+  For now, this file is empty and not referenced in CMakeLists.txt.
+  ======================================================================= -->
+<RCC>
+  <qresource prefix="/">
+  </qresource>
+</RCC>
