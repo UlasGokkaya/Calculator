@@ -5,32 +5,32 @@ Each step is **~30 minutes**. Every step produces something you can **run and se
 
 ---
 
-## ✅ Step 1 — Empty Window *(you are here)*
+## ✅ Step 1 — Empty Window
 - **What:** Window opens with a title and fixed size.
 - **Learn:** `QApplication`, `QMainWindow`, CMake build system.
 - **Files:** `main.cpp`, `MainWindow.h`, `MainWindow.cpp`
 
-## ⬜ Step 2 — Add the Display
+## ✅ Step 2 — Add the Display
 - **What:** A `QLineEdit` at the top of the window, read-only, right-aligned.
 - **Learn:** Widget creation, `QVBoxLayout`, parent-child ownership.
-- **Files:** `Display.h`, `Display.cpp`, update `MainWindow`
+- **Files:** `CalcDisplay.h`, `CalcDisplay.cpp`, update `MainWindow`
 
-## ⬜ Step 3 — Add Digit Buttons (0–9)
+## ✅ Step 3 — Add Digit Buttons (0–9)
 - **What:** A 4×3 grid of number buttons appears below the display.
 - **Learn:** `QGridLayout`, `QPushButton`, creating widgets in a loop.
 - **Files:** `ButtonGrid.h`, `ButtonGrid.cpp`, update `MainWindow`
 
-## ⬜ Step 4 — Wire Digits to Display
+## ✅ Step 4 — Wire Digits to Display
 - **What:** Clicking "7" makes "7" appear on the display.
 - **Learn:** `connect()`, signals & slots, `Q_OBJECT` macro.
 - **Files:** Update `ButtonGrid` (add signal), update `MainWindow` (add slot)
 
-## ⬜ Step 5 — Create the Calculator Engine
+## ✅ Step 5 — Create the Calculator Engine
 - **What:** A pure C++ class that knows how to accumulate digits into a number.
-- **Learn:** Separating logic from UI, class design, header/source split.
+- **Learn:** Separating logic from UI, class design, `char` → `std::string` conversion.
 - **Files:** `CalculatorEngine.h`, `CalculatorEngine.cpp`
 
-## ⬜ Step 6 — Add Operator Buttons (+, −, ×, ÷)
+## ⬜ Step 6 — Add Operator Buttons (+, −, ×, ÷) *(you are here)*
 - **What:** Four operator buttons appear on the right side of the grid.
 - **Learn:** `enum class Operation`, extending a grid layout.
 - **Files:** Update `ButtonGrid`, update `Types.h`

@@ -30,11 +30,8 @@
 // =============================================================================
 
 CalculatorEngine::CalculatorEngine()
-    : m_displayText("0")
-    , m_firstOperand(0.0)
-    , m_pendingOperation(Operation::None)
-    , m_waitingForSecondOperand(false)
-{
+    : m_displayText("0"), m_firstOperand(0.0), m_pendingOperation(Operation::None),
+      m_waitingForSecondOperand(false) {
     // The initializer list above already did all the work.
     // The body is empty — this is totally normal for constructors.
 }
@@ -49,23 +46,17 @@ CalculatorEngine::CalculatorEngine()
 //   - If m_waitingForSecondOperand is true, start fresh (replace display)
 //   - Otherwise, just append the digit to the end of m_displayText
 //
-// Example implementation to get you started:
-//
-//   void CalculatorEngine::appendDigit(char digit) {
-//       if (m_waitingForSecondOperand) {
-//           m_displayText = std::string(1, digit);  // "1 char → string"
-//           m_waitingForSecondOperand = false;
-//       } else if (m_displayText == "0") {
-//           m_displayText = std::string(1, digit);
-//       } else {
-//           m_displayText += digit;  // append
-//       }
-//   }
 // =============================================================================
 
 void CalculatorEngine::appendDigit(char digit) {
-    // TODO: Your implementation here (see hints above)
-    (void)digit;  // Suppresses "unused parameter" warning until you implement it
+    if (m_waitingForSecondOperand) {
+        m_displayText = std::string{digit};
+        m_waitingForSecondOperand = false;
+    } else if (m_displayText == "0") {
+        m_displayText = std::string{digit};
+    } else {
+        m_displayText += digit;
+    }
 }
 
 // =============================================================================

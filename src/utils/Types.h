@@ -9,10 +9,6 @@
 // For example, both CalculatorEngine and ButtonGrid need to know what
 // "Operation" means, but they shouldn't include each other — they include
 // this instead.
-//
-// WHY IT'S HEADER-ONLY (no .cpp file):
-// This file only contains type definitions and constants — no executable code.
-// The compiler doesn't need a .cpp for things like enums and constexpr values.
 // =============================================================================
 
 #pragma once
@@ -40,7 +36,9 @@ enum class Operation {
     Add,        // +
     Subtract,   // −
     Multiply,   // ×
-    Divide      // ÷
-
-    // TODO (Step 7+): You might add Modulo, Power, etc. here later
+    Divide,     // ÷
+    Modulo,     // %
+    Power,      // ^
+    Root,       // √
+    Factorial   // !
 };
