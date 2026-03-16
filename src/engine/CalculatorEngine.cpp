@@ -72,8 +72,14 @@ void CalculatorEngine::appendDigit(char digit) {
 // =============================================================================
 
 void CalculatorEngine::setOperation(Operation op) {
-    // TODO: Your implementation here
-    (void)op;
+    // Convert the current display to a number and store it
+    m_firstOperand = std::stod(m_displayText);
+
+    // Store which operation the user wants to perform
+    m_pendingOperation = op;
+
+    // Now we're waiting for the user to type the second number
+    m_waitingForSecondOperand = true;
 }
 
 // =============================================================================
@@ -97,7 +103,65 @@ void CalculatorEngine::setOperation(Operation op) {
 // =============================================================================
 
 void CalculatorEngine::calculate() {
-    // TODO: Your implementation here
+    // If there's no pending operation, nothing to do
+    if (m_pendingOperation == Operation::None) {
+        return;
+    }
+
+    // Get the second number from the display
+    double secondOperand = std::stod(m_displayText);
+    double result = 0.0;
+
+    // Perform the calculation based on the operation
+    switch (m_pendingOperation) {
+        case Operation::Add:
+            result = m_firstOperand + secondOperand;
+            break;
+
+        case Operation::Subtract:
+            result = m_firstOperand - secondOperand;
+            break;
+
+        case Operation::Multiply:
+            result = m_firstOperand * secondOperand;
+            break;
+
+        case Operation::Divide:
+            // Check for division by zero
+            if (secondOperand == 0.0) {
+                m_displayText = "Error";
+                m_pendingOperation = Operation::None;
+                m_waitingForSecondOperand = true;
+                return;
+            }
+            result = m_firstOperand / secondOperand;
+            break;
+
+        case Operation::None:
+        case Operation::Modulo:
+        case Operation::Power:
+        case Operation::Root:
+        case Operation::Factorial:
+            // These will be implemented in future steps
+            return;
+    }
+
+    // Convert result to string and update display
+    m_displayText = std::to_string(result);
+
+    // Clean up trailing zeros and decimal point (e.g., "5.000000" → "5")
+    if (m_displayText.find('.') != std::string::npos) {
+        // Remove trailing zeros
+        m_displayText.erase(m_displayText.find_last_not_of('0') + 1);
+        // Remove trailing decimal point if no fractional part
+        if (m_displayText.back() == '.') {
+            m_displayText.pop_back();
+        }
+    }
+
+    // Reset for next calculation
+    m_pendingOperation = Operation::None;
+    m_waitingForSecondOperand = true;
 }
 
 // =============================================================================
